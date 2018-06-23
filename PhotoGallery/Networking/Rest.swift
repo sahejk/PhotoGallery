@@ -44,7 +44,7 @@ open class Rest: NSObject, RestInterface {
   }
   
   public enum APIURLs: String {
-    case baseUrl = "https://flickr.com/services/rest/"
+    case baseUrl = "https://api.flickr.com/services/rest/"
   }
   
   /// Make a REST connection

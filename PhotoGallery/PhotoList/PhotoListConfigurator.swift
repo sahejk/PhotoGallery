@@ -24,6 +24,8 @@ final class PhotoListConfigurator {
     
     let interactor = PhotoListInteractor()
     interactor.presenter = presenter
+    interactor.restStore = PhotoListRestStore(restClient: Rest())
+
     
     viewController.interactor = interactor
 }

@@ -13,7 +13,11 @@ struct PhotoListModels {
     }
     
     struct Response {
-      
+      let photos: Photos
+    }
+    
+    struct ViewModel {
+      let photos: [Photo]
     }
   }
 }

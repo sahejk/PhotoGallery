@@ -9,8 +9,15 @@
 import Foundation
 
 protocol PhotoListPresenterInterface {
+  func presentPhotoData(response: PhotoListModels.PhotoSearch.Response)
+  
 }
 
 class PhotoListPresenter: PhotoListPresenterInterface {
   weak var viewController: PhotoListViewControllerInterface?
+  
+  func presentPhotoData(response: PhotoListModels.PhotoSearch.Response) {
+    viewController?.presentSearchResults(photos: response.photos.photo)
+  }
+
 }

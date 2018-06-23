@@ -9,11 +9,36 @@
 import Foundation
 
 protocol PhotoListStore {
-  
+  func searchPhoto(searchText: String, completion: @escaping (_ photos: Photos) -> Void)
 }
 
 class PhotoListRestStore: PhotoListStore {
-  func searchPhoto(searchText: String) {
-    
+  let restClient: RestInterface
+  init(restClient: RestInterface) {
+    self.restClient = restClient
+  }
+  
+  enum APIEndpoint: String {
+    case searchPhotos = ""
+  }
+  
+  private let pageSize = 20
+  
+  func searchPhoto(searchText: String, completion: @escaping (_ photos: Photos) -> Void) {
+    self.restClient.get(path: APIEndpoint.searchPhotos.rawValue, query: getQueryStringForSearch(searchText), headers: [:]) { (response) in
+      
+      do {
+        let photosDict = response["photos"] as? JSONObject ?? [:]
+        let data = try JSONSerialization.data(withJSONObject: photosDict, options: JSONSerialization.WritingOptions.prettyPrinted)
+        let photos = try JSONDecoder().decode(Photos.self, from: data)
+        completion(photos)
+      } catch {
+        
+      }
+    }
+  }
+  
+  private func getQueryStringForSearch(_ text: String) -> String {
+    return "method=flickr.photos.search&api_key=1c1e672e291eaee204d3a2f234dc8c32&text=\(text)&per_page=\(pageSize)&format=json&nojsoncallback=1"
   }
 }
