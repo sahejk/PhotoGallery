@@ -25,6 +25,7 @@
 		9CBEEE6720DE356E0077DCD2 /* PhotoListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBEEE6620DE356E0077DCD2 /* PhotoListConfigurator.swift */; };
 		9CD51A3A20DECEB900426D0D /* UICollectionViewDequeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD51A3920DECEB900426D0D /* UICollectionViewDequeExtension.swift */; };
 		9CD51A3E20DEE10900426D0D /* PhotoLayoutMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD51A3D20DEE10900426D0D /* PhotoLayoutMenuViewController.swift */; };
+		9CD51A4220DEEF0700426D0D /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD51A4120DEEF0700426D0D /* ImageStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		9CBEEE6620DE356E0077DCD2 /* PhotoListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListConfigurator.swift; sourceTree = "<group>"; };
 		9CD51A3920DECEB900426D0D /* UICollectionViewDequeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewDequeExtension.swift; sourceTree = "<group>"; };
 		9CD51A3D20DEE10900426D0D /* PhotoLayoutMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLayoutMenuViewController.swift; sourceTree = "<group>"; };
+		9CD51A4120DEEF0700426D0D /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				9C04D36520DE51C6002FD1F8 /* PhotoListRestStore.swift */,
+				9CD51A4120DEEF0700426D0D /* ImageStore.swift */,
 			);
 			path = RestStore;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				9C04D36920DE521C002FD1F8 /* Rest.swift in Sources */,
 				9C04D36C20DE8D3E002FD1F8 /* Photo.swift in Sources */,
 				9C04D36E20DE9004002FD1F8 /* Photos.swift in Sources */,
+				9CD51A4220DEEF0700426D0D /* ImageStore.swift in Sources */,
 				9CBEEE6520DE354E0077DCD2 /* PhotoListPresenter.swift in Sources */,
 				9C04D36620DE51C6002FD1F8 /* PhotoListRestStore.swift in Sources */,
 				9CBEEE5F20DE35190077DCD2 /* PhotoListModels.swift in Sources */,

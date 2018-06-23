@@ -20,6 +20,12 @@ extension PhotoListViewController: UICollectionViewDataSource {
                       cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     return collectionView.dequeueReusableCustomCellWithIdentifier("photoCell", forIndexPath: indexPath)
   }
+  
+  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    if (indexPath.row) == photos.count - 1, let interator =  interactor, interator.hasNextSlice() {
+      interactor?.fetchNextSlice()
+    }
+  }
 
   
 }

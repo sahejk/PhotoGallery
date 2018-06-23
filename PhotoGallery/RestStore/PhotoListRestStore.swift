@@ -10,6 +10,7 @@ import Foundation
 
 protocol PhotoListStore {
   func searchPhoto(searchText: String, completion: @escaping (_ photos: Photos) -> Void)
+  func searchPhoto(searchText: String,pageNo: Int, completion: @escaping (_ photos: Photos) -> Void)
 }
 
 class PhotoListRestStore: PhotoListStore {
@@ -25,7 +26,11 @@ class PhotoListRestStore: PhotoListStore {
   private let pageSize = 20
   
   func searchPhoto(searchText: String, completion: @escaping (_ photos: Photos) -> Void) {
-    self.restClient.get(path: APIEndpoint.searchPhotos.rawValue, query: getQueryStringForSearch(searchText), headers: [:]) { (response) in
+    self.searchPhoto(searchText: searchText, pageNo: 1, completion: completion)
+  }
+  
+  func searchPhoto(searchText: String,pageNo: Int, completion: @escaping (_ photos: Photos) -> Void) {
+    self.restClient.get(path: APIEndpoint.searchPhotos.rawValue, query: getQueryStringForSearch(searchText, page: pageNo), headers: [:]) { (response) in
       
       do {
         let photosDict = response["photos"] as? JSONObject ?? [:]
@@ -36,9 +41,10 @@ class PhotoListRestStore: PhotoListStore {
         
       }
     }
+
   }
   
-  private func getQueryStringForSearch(_ text: String) -> String {
-    return "method=flickr.photos.search&api_key=1c1e672e291eaee204d3a2f234dc8c32&text=\(text)&per_page=\(pageSize)&format=json&nojsoncallback=1"
+  private func getQueryStringForSearch(_ text: String, page: Int) -> String {
+    return "method=flickr.photos.search&api_key=1c1e672e291eaee204d3a2f234dc8c32&text=\(text)&per_page=\(pageSize)&page=\(page)&format=json&nojsoncallback=1"
   }
 }

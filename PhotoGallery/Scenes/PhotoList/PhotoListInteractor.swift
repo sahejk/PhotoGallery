@@ -11,26 +11,43 @@ import Foundation
 protocol PhotoListInteractorInterface {
   func searchPhotos(request: PhotoListModels.PhotoSearch.Request)
   var restStore: PhotoListStore? {get set}
+  func hasNextSlice() -> Bool
+  func fetchNextSlice()
 }
 
 final class PhotoListInteractor: PhotoListInteractorInterface {
   var presenter: PhotoListPresenterInterface?
   var restStore: PhotoListStore?
-  var photos: Photos? {
+  var currentPage: Int = 0
+  var totalPages: Int?
+  var searchText: String = ""
+  var photos: [Photo] = [] {
     didSet {
       presentPhotos()
     }
   }
   func searchPhotos(request: PhotoListModels.PhotoSearch.Request) {
-    restStore?.searchPhoto(searchText: request.searchText, completion: {[weak self] photos in
-      self?.photos = photos
-      print(photos)
-    })
+    searchText = request.searchText
+    fetchNextSlice()
   }
   
   func presentPhotos() {
-    guard let photos = self.photos else  { return }
     presenter?.presentPhotoData(response: PhotoListModels.PhotoSearch.Response(photos: photos))
   }
+  
+  func hasNextSlice() -> Bool {
+    guard let totalPages = totalPages else {return false}
+    return currentPage < totalPages
+  }
+  
+  func fetchNextSlice() {
+    restStore?.searchPhoto(searchText: searchText, pageNo: currentPage + 1, completion: {[weak self] photos in
+      self?.photos = (self?.photos ?? []) + photos.photo
+      self?.currentPage = photos.page
+      self?.totalPages = photos.pages
+      print(photos)
+    })
 
+  }
+  
 }

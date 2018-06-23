@@ -13,11 +13,16 @@ struct PhotoListModels {
     }
     
     struct Response {
-      let photos: Photos
+      let photos: [Photo]
     }
     
     struct ViewModel {
       let photos: [Photo]
+    }
+  }
+  struct ImageFetch {
+    struct Request {
+      
     }
   }
 }
