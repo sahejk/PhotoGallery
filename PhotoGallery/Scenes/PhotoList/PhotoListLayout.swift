@@ -12,18 +12,14 @@ extension PhotoListViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView,
                       layout collectionViewLayout: UICollectionViewLayout,
                       sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let screenWidth = UIScreen.main.bounds.size.width
-    let cellWidth = screenWidth / CGFloat(noOfCellsPerRow)
+    let paddingDistance = 10 * CGFloat(noOfCellsPerRow - 1)
+    let cellWidth = floor(((collectionView.bounds.size.width - paddingDistance) / CGFloat(noOfCellsPerRow)))
     return CGSize(width: cellWidth, height: cellWidth)
   }
   
   func collectionView(_ collectionView: UICollectionView,
                       layout collectionViewLayout: UICollectionViewLayout,
                       minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 0
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    return 0
+    return 10
   }
 }
