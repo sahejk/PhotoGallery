@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+protocol PhotoListPresenterInterface {
+}
+
+class PhotoListPresenter: PhotoListPresenterInterface {
+  weak var viewController: PhotoListViewControllerInterface?
+}

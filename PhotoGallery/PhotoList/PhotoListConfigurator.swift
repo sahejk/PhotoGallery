@@ -7,3 +7,25 @@
 //
 
 import Foundation
+
+final class PhotoListConfigurator {
+  
+  // MARK: - Object lifecycle
+  
+  static let sharedInstance = PhotoListConfigurator()
+  
+  private init() {}
+  
+  // MARK: - Configuration
+  
+  func configure(viewController: PhotoListViewController) {
+    let presenter = PhotoListPresenter()
+    presenter.viewController = viewController
+    
+    let interactor = PhotoListInteractor()
+    interactor.presenter = presenter
+    
+    viewController.interactor = interactor
+}
+  
+}

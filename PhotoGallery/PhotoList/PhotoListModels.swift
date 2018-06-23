@@ -6,4 +6,14 @@
 //  Copyright © 2018 Sahej. All rights reserved.
 //
 
-
+struct PhotoListModels {
+  struct PhotoSearch {
+    struct Request {
+      let searchText: String
+    }
+    
+    struct Response {
+      
+    }
+  }
+}

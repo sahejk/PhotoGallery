@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+protocol PhotoListInteractorInterface {
+  func searchPhotos(request: PhotoListModels.PhotoSearch.Request)
+}
+
+final class PhotoListInteractor: PhotoListInteractorInterface {
+  var presenter: PhotoListPresenterInterface?
+  func searchPhotos(request: PhotoListModels.PhotoSearch.Request) {
+    
+  }
+
+}

@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-393" y="67"/>
         </scene>
-        <!--Phot List View Controller-->
+        <!--Photo List View Controller-->
         <scene sceneID="c9Q-NN-SSJ">
             <objects>
-                <viewController id="YNK-dc-7Ra" customClass="PhotListViewController" customModule="PhotoGallery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YNK-dc-7Ra" customClass="PhotoListViewController" customModule="PhotoGallery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1vw-8p-h05">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -89,6 +89,9 @@
                         </view>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="searchBar" destination="anR-xa-b0S" id="bvT-zk-IjX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i2G-Mu-g2K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
