@@ -19,7 +19,7 @@ final class PhotoListInteractor: PhotoListInteractorInterface {
   var presenter: PhotoListPresenterInterface?
   var restStore: PhotoListStore?
   var currentPage: Int = 0
-  var totalPages: Int?
+  var totalPages: Int = 0
   var searchText: String = ""
   var photos: [Photo] = [] {
     didSet {
@@ -28,6 +28,9 @@ final class PhotoListInteractor: PhotoListInteractorInterface {
   }
   func searchPhotos(request: PhotoListModels.PhotoSearch.Request) {
     searchText = request.searchText
+    currentPage = 0
+    photos = []
+    totalPages = 0
     fetchNextSlice()
   }
   
@@ -36,7 +39,6 @@ final class PhotoListInteractor: PhotoListInteractorInterface {
   }
   
   func hasNextSlice() -> Bool {
-    guard let totalPages = totalPages else {return false}
     return currentPage < totalPages
   }
   
@@ -45,8 +47,7 @@ final class PhotoListInteractor: PhotoListInteractorInterface {
       self?.photos = (self?.photos ?? []) + photos.photo
       self?.currentPage = photos.page
       self?.totalPages = photos.pages
-      print(photos)
-    })
+     })
 
   }
   

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PhotoListViewControllerInterface: class {
-  func presentSearchResults(photos: [Photo])
+  func presentSearchResults(photoURLs: [URL])
 }
 
 protocol LayoutMenuDelegate: class {
@@ -20,7 +20,7 @@ class PhotoListViewController:UIViewController, PhotoListViewControllerInterface
   @IBOutlet weak var collectionView: UICollectionView!
   var interactor: PhotoListInteractorInterface?
   
-  var photos: [Photo] = [] {
+  var photoURLs: [URL] = [] {
     didSet {
       updateCollectionView()
     }
@@ -49,8 +49,8 @@ class PhotoListViewController:UIViewController, PhotoListViewControllerInterface
     interactor?.searchPhotos(request: request)
   }
   
-  func presentSearchResults(photos: [Photo]) {
-    self.photos = photos
+  func presentSearchResults(photoURLs: [URL]) {
+    self.photoURLs = photoURLs
   }
   
   func updateCollectionView() {

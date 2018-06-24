@@ -44,14 +44,14 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="pEM-dP-1pT">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="pEM-dP-1pT" customClass="PhotoCell" customModule="PhotoGallery" customModuleProvider="target">
                                         <rect key="frame" x="84" y="0.0" width="187.5" height="187.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="187.5" height="187.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="G3n-md-9Sr">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="G3n-md-9Sr">
                                                     <rect key="frame" x="0.0" y="0.0" width="187.5" height="187.5"/>
                                                 </imageView>
                                             </subviews>
@@ -63,6 +63,9 @@
                                             <constraint firstItem="G3n-md-9Sr" firstAttribute="leading" secondItem="pEM-dP-1pT" secondAttribute="leading" id="yeK-Xa-azG"/>
                                         </constraints>
                                         <size key="customSize" width="187.5" height="187.5"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="G3n-md-9Sr" id="nTv-d3-Eue"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
