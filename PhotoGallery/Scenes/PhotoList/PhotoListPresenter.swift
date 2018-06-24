@@ -18,13 +18,9 @@ class PhotoListPresenter: PhotoListPresenterInterface {
   
   func presentPhotoData(response: PhotoListModels.PhotoSearch.Response) {
     let photoURLs = response.photos.map { (photo) -> URL in
-      let urlString = "https://farm\(photo.farm).staticflickr.com/\(photo.server)/\(photo.id)_\(photo.secret)_t.jpg"
-      return URL(string: urlString)!
+      return photo.getPhotUrl()!
     }
     viewController?.presentSearchResults(photoURLs: photoURLs)
   }
 
 }
-
-//https://farm2.staticflickr.com/1794/29092961018_7878516155_t.jpg
-

@@ -29,6 +29,9 @@
 		9CD51A4420DF9BF100426D0D /* ImageDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD51A4320DF9BF100426D0D /* ImageDownloadManager.swift */; };
 		9CD51A4620DFB9CA00426D0D /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD51A4520DFB9CA00426D0D /* PhotoCell.swift */; };
 		9CD51A4820DFD97800426D0D /* UIImageView+AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD51A4720DFD97800426D0D /* UIImageView+AssociatedObject.swift */; };
+		9CD51A4B20E0157300426D0D /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD51A4A20E0157300426D0D /* PhotoDetailViewController.swift */; };
+		9CD51A4D20E0182500426D0D /* PhotoListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD51A4C20E0182500426D0D /* PhotoListRouter.swift */; };
+		9CD51A5920E02BD300426D0D /* PresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD51A5720E02BD300426D0D /* PresentAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,9 @@
 		9CD51A4320DF9BF100426D0D /* ImageDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadManager.swift; sourceTree = "<group>"; };
 		9CD51A4520DFB9CA00426D0D /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		9CD51A4720DFD97800426D0D /* UIImageView+AssociatedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+AssociatedObject.swift"; sourceTree = "<group>"; };
+		9CD51A4A20E0157300426D0D /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
+		9CD51A4C20E0182500426D0D /* PhotoListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListRouter.swift; sourceTree = "<group>"; };
+		9CD51A5720E02BD300426D0D /* PresentAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +175,7 @@
 				9CBEEE6620DE356E0077DCD2 /* PhotoListConfigurator.swift */,
 				9C04D36F20DE9FE9002FD1F8 /* PhotoListLayout.swift */,
 				9CD51A4520DFB9CA00426D0D /* PhotoCell.swift */,
+				9CD51A4C20E0182500426D0D /* PhotoListRouter.swift */,
 			);
 			path = PhotoList;
 			sourceTree = "<group>";
@@ -176,6 +183,7 @@
 		9CD51A3820DECE9F00426D0D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				9CD51A5720E02BD300426D0D /* PresentAnimator.swift */,
 				9CD51A3920DECEB900426D0D /* UICollectionViewDequeExtension.swift */,
 				9CD51A4720DFD97800426D0D /* UIImageView+AssociatedObject.swift */,
 			);
@@ -193,11 +201,20 @@
 		9CD51A3C20DEE0D800426D0D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				9CD51A4920E0155B00426D0D /* PhotoDetail */,
 				9CBEEE5A20DE34F00077DCD2 /* PhotoList.storyboard */,
 				9CBEEE5920DE34DC0077DCD2 /* PhotoList */,
 				9CD51A3B20DEE0C700426D0D /* PhotoLayoutMenu */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		9CD51A4920E0155B00426D0D /* PhotoDetail */ = {
+			isa = PBXGroup;
+			children = (
+				9CD51A4A20E0157300426D0D /* PhotoDetailViewController.swift */,
+			);
+			path = PhotoDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,11 +321,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CD51A3A20DECEB900426D0D /* UICollectionViewDequeExtension.swift in Sources */,
+				9CD51A4B20E0157300426D0D /* PhotoDetailViewController.swift in Sources */,
 				9C04D37020DE9FE9002FD1F8 /* PhotoListLayout.swift in Sources */,
 				9CBEEE6120DE352B0077DCD2 /* PhotoListDataSource.swift in Sources */,
+				9CD51A5920E02BD300426D0D /* PresentAnimator.swift in Sources */,
 				9CBEEE6320DE353E0077DCD2 /* PhotoListInteractor.swift in Sources */,
 				9CBEEE3A20DE25AB0077DCD2 /* AppDelegate.swift in Sources */,
 				9CD51A4620DFB9CA00426D0D /* PhotoCell.swift in Sources */,
+				9CD51A4D20E0182500426D0D /* PhotoListRouter.swift in Sources */,
 				9C04D36920DE521C002FD1F8 /* Rest.swift in Sources */,
 				9C04D36C20DE8D3E002FD1F8 /* Photo.swift in Sources */,
 				9C04D36E20DE9004002FD1F8 /* Photos.swift in Sources */,

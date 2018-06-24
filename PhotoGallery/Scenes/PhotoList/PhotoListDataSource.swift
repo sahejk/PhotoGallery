@@ -38,4 +38,11 @@ extension PhotoListViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     validatePaginationRequired(indexPath: indexPath)
   }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    self.selectedImage = (collectionView.cellForItem(at: indexPath) as? PhotoCell)?.imageView.image
+    interactor?.selectedIndex = indexPath.row
+    router?.navigateToPhotoDetails()
+  }
+  
 }

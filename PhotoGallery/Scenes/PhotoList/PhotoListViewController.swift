@@ -19,12 +19,14 @@ class PhotoListViewController:UIViewController, PhotoListViewControllerInterface
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var collectionView: UICollectionView!
   var interactor: PhotoListInteractorInterface?
-  
+  var router: PhotoListRouterInterface?
+
   var photoURLs: [URL] = [] {
     didSet {
       updateCollectionView()
     }
   }
+  var selectedImage: UIImage?
   var noOfCellsPerRow = 2 {
     didSet {
       collectionView.reloadData()
@@ -41,6 +43,7 @@ class PhotoListViewController:UIViewController, PhotoListViewControllerInterface
     searchBar.delegate = self
     collectionView.dataSource = self
     collectionView.delegate = self
+    self.navigationController?.delegate = self
   }
   
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

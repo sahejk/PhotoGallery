@@ -9,6 +9,8 @@
 import Foundation
 
 protocol PhotoListInteractorInterface {
+  var selectedIndex: Int {get set}
+  func getSelectedPhoto() -> Photo
   func searchPhotos(request: PhotoListModels.PhotoSearch.Request)
   var restStore: PhotoListStore? {get set}
   func hasNextSlice() -> Bool
@@ -21,6 +23,7 @@ final class PhotoListInteractor: PhotoListInteractorInterface {
   var currentPage: Int = 0
   var totalPages: Int = 0
   var searchText: String = ""
+  var selectedIndex: Int = 0
   var photos: [Photo] = [] {
     didSet {
       presentPhotos()
@@ -40,6 +43,10 @@ final class PhotoListInteractor: PhotoListInteractorInterface {
   
   func hasNextSlice() -> Bool {
     return currentPage < totalPages
+  }
+  
+  func getSelectedPhoto() -> Photo {
+    return photos[selectedIndex]
   }
   
   func fetchNextSlice() {

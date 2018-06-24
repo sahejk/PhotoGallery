@@ -18,7 +18,7 @@ class ImageDownloadManager {
   
   private init () {}
   
-  func downloadImage(requestURL: URL, completion: @escaping (_ image: UIImage, _ url: URL) -> Void) -> URLSessionDataTask? {
+  @discardableResult func downloadImage(requestURL: URL, completion: @escaping (_ image: UIImage, _ url: URL) -> Void) -> URLSessionDataTask? {
     if let cachedImage = cache.object(forKey: requestURL.absoluteString as NSString) {
       DispatchQueue.main.async {
         completion(cachedImage, requestURL)
