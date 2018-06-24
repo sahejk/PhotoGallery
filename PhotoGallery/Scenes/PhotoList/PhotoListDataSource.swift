@@ -45,4 +45,21 @@ extension PhotoListViewController: UICollectionViewDataSource {
     router?.navigateToPhotoDetails()
   }
   
+  func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {    
+    switch kind {
+      
+    case UICollectionElementKindSectionFooter:
+      let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "footer", for: indexPath as IndexPath)
+
+      let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+      spinner.startAnimating()
+      spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: collectionView.bounds.width, height: 60)
+      footerView.addSubview(spinner)
+      return footerView
+      
+    default:
+      
+      assert(false, "Unexpected element kind")
+    }
+  }
 }

@@ -11,18 +11,8 @@ struct PhotoListModels {
     struct Request {
       let searchText: String
     }
-    
     struct Response {
       let photos: [Photo]
-    }
-    
-    struct ViewModel {
-      let photos: [Photo]
-    }
-  }
-  struct ImageFetch {
-    struct Request {
-      
     }
   }
 }

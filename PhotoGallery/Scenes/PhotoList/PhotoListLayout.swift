@@ -22,4 +22,9 @@ extension PhotoListViewController: UICollectionViewDelegateFlowLayout {
                       minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return 10
   }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+    return (self.interactor?.hasNextSlice() ?? false) ? CGSize(width: collectionView.bounds.width, height: 60) : CGSize.zero
+
+  }
 }

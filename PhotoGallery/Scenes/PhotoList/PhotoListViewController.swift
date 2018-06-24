@@ -43,6 +43,7 @@ class PhotoListViewController:UIViewController, PhotoListViewControllerInterface
     searchBar.delegate = self
     collectionView.dataSource = self
     collectionView.delegate = self
+    collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footer")
     self.navigationController?.delegate = self
   }
   
@@ -71,8 +72,6 @@ class PhotoListViewController:UIViewController, PhotoListViewControllerInterface
   }
 
 }
-
-
 
 extension PhotoListViewController {
   @IBAction func layoutMenuTapped(_ sender: UIButton) {
