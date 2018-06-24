@@ -10,4 +10,8 @@ import UIKit
 
 class PhotoCell: UICollectionViewCell {
   @IBOutlet weak var imageView: UIImageView!
+  override func prepareForReuse() {
+    imageView.image = UIImage(named: "photo_placeholder")
+    imageView.associatedDownloadTask?.cancel()
+  }
 }

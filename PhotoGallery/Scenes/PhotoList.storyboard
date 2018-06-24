@@ -51,7 +51,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="187.5" height="187.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="G3n-md-9Sr">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="G3n-md-9Sr">
                                                     <rect key="frame" x="0.0" y="0.0" width="187.5" height="187.5"/>
                                                 </imageView>
                                             </subviews>
@@ -64,7 +64,7 @@
                                         </constraints>
                                         <size key="customSize" width="187.5" height="187.5"/>
                                         <connections>
-                                            <outlet property="imageView" destination="G3n-md-9Sr" id="nTv-d3-Eue"/>
+                                            <outlet property="imageView" destination="G3n-md-9Sr" id="Pum-DR-YfP"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -86,18 +86,18 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="anR-xa-b0S">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="35"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="40" id="nbW-On-A4J"/>
+                                        <constraint firstAttribute="height" constant="35" id="nbW-On-A4J"/>
                                         <constraint firstAttribute="width" constant="200" id="pRm-wj-c1p"/>
                                     </constraints>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="anR-xa-b0S" firstAttribute="centerX" secondItem="MqD-Al-hB9" secondAttribute="centerX" id="FKM-08-0YS"/>
-                                <constraint firstAttribute="bottom" secondItem="anR-xa-b0S" secondAttribute="bottom" id="U8B-4c-zZV"/>
+                                <constraint firstAttribute="bottom" secondItem="anR-xa-b0S" secondAttribute="bottom" constant="5" id="U8B-4c-zZV"/>
                                 <constraint firstAttribute="trailing" secondItem="anR-xa-b0S" secondAttribute="trailing" id="g7E-gZ-Ri6"/>
                                 <constraint firstItem="anR-xa-b0S" firstAttribute="top" secondItem="MqD-Al-hB9" secondAttribute="top" id="gYE-vh-qld"/>
                                 <constraint firstItem="anR-xa-b0S" firstAttribute="leading" secondItem="MqD-Al-hB9" secondAttribute="leading" id="oFz-Sl-Sh6"/>
@@ -118,42 +118,12 @@
                     <connections>
                         <outlet property="collectionView" destination="Uz2-bN-S1V" id="TDq-r9-9JW"/>
                         <outlet property="searchBar" destination="anR-xa-b0S" id="bvT-zk-IjX"/>
-                        <segue destination="4w9-H5-ZfY" kind="show" identifier="showPhotoDetail" id="Za7-pK-FyY"/>
+                        <segue destination="BDy-yG-OH9" kind="show" identifier="showPhotoDetail" id="bon-VY-VJx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i2G-Mu-g2K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="545" y="45"/>
-        </scene>
-        <!--Photo Detail View Controller-->
-        <scene sceneID="FHM-do-TD3">
-            <objects>
-                <viewController storyboardIdentifier="photoDetailView" id="4w9-H5-ZfY" customClass="PhotoDetailViewController" customModule="PhotoGallery" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="web-uG-Re7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HtA-zb-v2J">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="HtA-zb-v2J" firstAttribute="leading" secondItem="DGG-i0-Nhh" secondAttribute="leading" id="DFz-oH-B0j"/>
-                            <constraint firstItem="HtA-zb-v2J" firstAttribute="top" secondItem="DGG-i0-Nhh" secondAttribute="top" id="DmS-1u-aan"/>
-                            <constraint firstItem="DGG-i0-Nhh" firstAttribute="bottom" secondItem="HtA-zb-v2J" secondAttribute="bottom" id="LxZ-CU-CtQ"/>
-                            <constraint firstItem="DGG-i0-Nhh" firstAttribute="trailing" secondItem="HtA-zb-v2J" secondAttribute="trailing" id="ys7-ss-B5V"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="DGG-i0-Nhh"/>
-                    </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <connections>
-                        <outlet property="imageView" destination="HtA-zb-v2J" id="VvZ-Qr-zie"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sOM-Dr-VGA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1372" y="12.143928035982009"/>
         </scene>
         <!--Photo Layout Menu View Controller-->
         <scene sceneID="mS3-Ou-6yg">
@@ -241,7 +211,37 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jvW-4V-jZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1182" y="570"/>
+            <point key="canvasLocation" x="1388" y="45"/>
+        </scene>
+        <!--Photo Detail View Controller-->
+        <scene sceneID="5NA-39-F08">
+            <objects>
+                <viewController id="BDy-yG-OH9" customClass="PhotoDetailViewController" customModule="PhotoGallery" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0xE-91-blI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9o6-EC-h8d">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="b9b-4O-Yyd" firstAttribute="trailing" secondItem="9o6-EC-h8d" secondAttribute="trailing" id="4Ku-gE-bSF"/>
+                            <constraint firstItem="9o6-EC-h8d" firstAttribute="leading" secondItem="b9b-4O-Yyd" secondAttribute="leading" id="ODk-bz-6P4"/>
+                            <constraint firstItem="b9b-4O-Yyd" firstAttribute="bottom" secondItem="9o6-EC-h8d" secondAttribute="bottom" id="e8q-uR-jDh"/>
+                            <constraint firstItem="9o6-EC-h8d" firstAttribute="top" secondItem="b9b-4O-Yyd" secondAttribute="top" id="qzV-JL-dGh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="b9b-4O-Yyd"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="imageView" destination="9o6-EC-h8d" id="heV-JO-aFj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yKc-4z-OjL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1273" y="479"/>
         </scene>
     </scenes>
     <resources>

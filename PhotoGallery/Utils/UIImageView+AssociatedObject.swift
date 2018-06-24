@@ -12,7 +12,7 @@ extension UIImageView {
     static var dataTaskAssociatedObject = "nsh_ImageURL"
   }
   
-  var associatedObject: URLSessionDataTask? {
+  var associatedDownloadTask: URLSessionDataTask? {
     get {
       return objc_getAssociatedObject(self, &AssociatedKeys.dataTaskAssociatedObject) as? URLSessionDataTask
     }

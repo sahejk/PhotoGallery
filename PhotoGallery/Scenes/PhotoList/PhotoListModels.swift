@@ -11,8 +11,9 @@ struct PhotoListModels {
     struct Request {
       let searchText: String
     }
+    
     struct Response {
       let photos: [Photo]
-    }
+    }    
   }
 }

@@ -16,14 +16,10 @@ extension PhotoListViewController: UICollectionViewDataSource {
     return self.photoURLs.count
   }
   
-  
-  
   func collectionView(_ collectionView: UICollectionView,
                       cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell: PhotoCell = collectionView.dequeueReusableCustomCellWithIdentifier("photoCell", forIndexPath: indexPath)
-    cell.imageView.image = UIImage(named: "photo_placeholder")
-    cell.imageView.associatedObject?.cancel()
-    cell.imageView.associatedObject = ImageDownloadManager.shared.downloadImage(requestURL: photoURLs[indexPath.row], completion: { (image, url) in
+    cell.imageView.associatedDownloadTask = ImageDownloadManager.shared.downloadImage(requestURL: photoURLs[indexPath.row], completion: { (image, url) in
       cell.imageView.image = image
     })
     return cell
@@ -47,18 +43,14 @@ extension PhotoListViewController: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {    
     switch kind {
-      
     case UICollectionElementKindSectionFooter:
       let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "footer", for: indexPath as IndexPath)
-
       let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
       spinner.startAnimating()
       spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: collectionView.bounds.width, height: 60)
       footerView.addSubview(spinner)
       return footerView
-      
     default:
-      
       assert(false, "Unexpected element kind")
     }
   }
