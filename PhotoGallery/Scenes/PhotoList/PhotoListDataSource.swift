@@ -38,6 +38,11 @@ extension PhotoListViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     self.selectedImage = (collectionView.cellForItem(at: indexPath) as? PhotoCell)?.imageView.image
     interactor?.selectedIndex = indexPath.row
+    
+    let attributes = collectionView.layoutAttributesForItem(at: indexPath)
+    let attributesFrame = attributes?.frame
+    let frameToOpenFrom = collectionView.convert(attributesFrame!, to: collectionView.superview)
+    self.openingFrame = frameToOpenFrom
     router?.navigateToPhotoDetails()
   }
   

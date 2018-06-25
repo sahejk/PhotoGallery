@@ -29,14 +29,18 @@ extension PhotoListViewController {
 
 extension PhotoListViewController: UINavigationControllerDelegate {
   func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-          guard let selectedIndex = self.collectionView.indexPathsForSelectedItems?.first, let cell = self.collectionView.cellForItem(at: selectedIndex) else { return nil}
+    guard let openingFrame = openingFrame else { return nil}
 
     switch operation {
     case .push:
-      let animator = PresentAnimator(isPresenting: true, originFrame: cell.frame)
+      let animator = PresentAnimator()
+      animator.presenting = true
+      animator.originFrame = openingFrame
       return animator
     default:
-      let animator = PresentAnimator(isPresenting: false, originFrame: cell.frame)
+      let animator = PresentAnimator()
+      animator.presenting = false
+      animator.originFrame = openingFrame
       return animator
     }
   }

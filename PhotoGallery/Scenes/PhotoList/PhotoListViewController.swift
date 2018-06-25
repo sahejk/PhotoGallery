@@ -20,7 +20,7 @@ class PhotoListViewController:UIViewController, PhotoListViewControllerInterface
   @IBOutlet weak var collectionView: UICollectionView!
   var interactor: PhotoListInteractorInterface?
   var router: PhotoListRouterInterface?
-
+  var openingFrame: CGRect?
   var photoURLs: [URL] = [] {
     didSet {
       updateCollectionView()

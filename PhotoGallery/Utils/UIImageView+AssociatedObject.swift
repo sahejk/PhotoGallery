@@ -9,7 +9,7 @@
 import UIKit
 extension UIImageView {
   private struct AssociatedKeys {
-    static var dataTaskAssociatedObject = "nsh_ImageURL"
+    static var dataTaskAssociatedObject = "nsh_DataTask"
   }
   
   var associatedDownloadTask: URLSessionDataTask? {

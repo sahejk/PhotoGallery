@@ -11,60 +11,61 @@ import UIKit
 
 class PresentAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
-  let duration = 0.5
-  let originFrame: CGRect
-  let isPresenting: Bool
-
-  init(isPresenting: Bool, originFrame: CGRect) {
-    self.originFrame = originFrame
-    self.isPresenting = isPresenting
-
-  }
-  
-  
+  let durationExpanding = 0.75
+  let durationClosing = 0.5
+  var presenting = true
+  var originFrame = CGRect.zero
+  var dismissCompletion: (()->Void)?
   func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-    return duration
+    if presenting {
+      return durationExpanding
+    }
+    return durationClosing
   }
-  
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-    
     let containerView = transitionContext.containerView
-    
-    
-    let toView = transitionContext.view(forKey: UITransitionContextViewKey.to)!
-    let fromView = transitionContext.view(forKey: UITransitionContextViewKey.from)!
-    
-
-    let detailView = self.isPresenting ? toView : fromView
-    
-    if self.isPresenting {
-      containerView.addSubview(toView)
+    guard let toView = transitionContext.view(forKey: .to), let detailView = presenting ? toView: transitionContext.view(forKey: .from) else {
+      return
+    }
+    let initialFrame = presenting ? originFrame : detailView.frame
+    let finalFrame = presenting ? detailView.frame : originFrame
+    let xScaleFactor = presenting ? initialFrame.width / finalFrame.width : finalFrame.width / initialFrame.width
+    let yScaleFactor = presenting ? initialFrame.height / finalFrame.height : finalFrame.height / initialFrame.height
+    let scaleTransform = CGAffineTransform(scaleX: xScaleFactor,
+                                           y: yScaleFactor)
+    if presenting {
+      detailView.transform = scaleTransform
+      detailView.center = CGPoint( x: initialFrame.midX, y: initialFrame.midY)
+      detailView.clipsToBounds = true
+    }
+    containerView.addSubview(toView)
+    containerView.bringSubview(toFront: detailView)
+    if presenting {
+      //update opening animation
+      UIView.animate(withDuration: durationExpanding, delay:0.0,
+                     usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, //gives it some bounce to make the transition look neater than if you have defaults
+        animations: {
+          detailView.transform = CGAffineTransform.identity
+          detailView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
+      },
+        completion:{_ in
+          transitionContext.completeTransition(true)
+      }
+      )
     } else {
-      containerView.insertSubview(toView, belowSubview: fromView)
-    }
-    
-    detailView.frame.origin = self.isPresenting ? self.originFrame.origin : CGPoint(x: 0, y: 0)
-    detailView.frame.size.width = self.isPresenting ? self.originFrame.size.width : containerView.bounds.width
-    detailView.layoutIfNeeded()
-    
-    for view in detailView.subviews {
-      if !(view is UIImageView) {
-        view.alpha = isPresenting ? 0.0 : 1.0
+      //update closing animation
+      UIView.animate(withDuration: durationClosing, delay:0.0, options: .curveLinear,
+                     animations: {
+                      detailView.transform = scaleTransform
+                      detailView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
+      },
+                     completion:{_ in
+                      if !self.presenting {
+                        self.dismissCompletion?()
+                      }
+                      transitionContext.completeTransition(true)
       }
-    }
-    
-    UIView.animate(withDuration: self.duration, animations: { () -> Void in
-      detailView.frame = self.isPresenting ? containerView.bounds : self.originFrame
-      detailView.layoutIfNeeded()
-      
-      for view in detailView.subviews {
-        if !(view is UIImageView) {
-          view.alpha = self.isPresenting ? 1.0 : 0.0
-        }
-      }
-    }) { (completed: Bool) -> Void in
-      transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+      )
     }
   }
-  
 }
